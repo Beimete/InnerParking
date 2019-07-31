@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inner-Parking-Map</title>
+    <script type="text/javascript" src="svg-pan-zoom.js"></script>
+</head>
+<body>
+    <svg width="2400" height="1500" id="map" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="满庭芳园">
+            <polygon
+                points="5,5 5,1135 2000,1135 2000,5" style="fill:#FCFCFC	"/>
+        </g>
+        <g id="三环">
+            <polygon
+                points="5,1045 5,1135 2000,1135 2000,1065"
+                style="fill:#EEB422; stroke:#EE7621; stroke-width:2"/>
+        </g>
+        <g id="District_left">
+            <polygon
+                points="5,5 85,5 73,1044 5,1044" style="fill:#FAFAD2"/>
+        </g>
+        <g id="District_top1">
+            <polygon
+                points="120,5 640,5 640,120 120,119" style="fill:#FAFAD2"/>
+        </g>
+        <g id="District_top2">
+            <polygon
+                points="665,5 1840,5 1840,113 665,120" style="fill:#FAFAD2"/>
+        </g>
+        <g id="District_top3">
+            <polygon
+                points="1865,5 2000,5 2000,115 1865,117" style="fill:#FAFAD2"/>
+        </g>
+        <g id="District_center1">
+            <polygon
+                points="120,150 118,480 655,480 655,200 680,180 1785,180 1820,215 1812,490 1802,505
+                1305,515 1304,1013 2000,1015 2000,140" style="fill:#FAFAD2"/>
+            <text x="1645" y="890" font-family="微软雅黑" font-size="22" fill="#424242" style="position: aboslute;">双榆树东里</text>
+        </g>
+        <g id="District_center2">
+            <polygon
+                points="680,480 1790,473 1795,225 1775,205 686,205 680,218" style="fill:#FAFAD2"/>
+        </g>
+        <g id="District_center3">
+            <polygon
+                points="116,512 111,708 635,712 652,702 652,518 430,515 245,513 148,512" style="fill:#FAFAD2"/>
+        </g>
+        <g id="District_center4">
+            <polygon
+                points="110,730 100,1007 1270,1013 1270,516 677,516 677,705 656,725" style="fill:#FAFAD2"/>
+                <text x="485" y="887" font-family="微软雅黑" font-size="22" fill="#424242" style="position: aboslute;">双榆树东里</text>
+        </g>
+        <g id="Street">
+            <polygon
+                points="10,1010 10,1035 931,1034 838,1054 956,1056 1032,1035 2000,1043 2000,1015 "
+                style="fill:#F5DEB3; stroke:#EEAD0E	; stroke-width:2"/>
+        </g>
+        <g id="青云当代大厦">
+            <polygon
+                points="210,227 209,409 527,410 528,226" style="fill:#FCFCFC"/>
+            <polygon
+                points="210,227 209,409 527,410 512,440 195,440 195,255" style="fill:#CFCFCF"/>
+            <text x="310" y="325" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">青云当代大厦</text>
+        </g>
+        <g id="满庭芳园A座1号楼">
+            <polygon
+                points="213,550 213,633 228,633 228,674 390,674 390,550
+                308,550 308,594 298,594 298,550" style="fill:#FCFCFC"/>
+            <polygon
+                points="213,550 213,633 228,633 228,674 390,674 386,696
+                220,696 220,652 200,652 200,568" style="fill:#CFCFCF"/>
+            <polygon
+                points="308,550 308,594 298,594 298,570" style="fill:#CFCFCF"/>
+            <text x="220" y="620" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">满庭芳园A座(1号楼)</text>
+        </g>
+        <g id="满庭芳园B座2号楼">
+            <polygon
+                points="460,550 460,633 474,633 474,674 627,674 627,550
+                550,550 550,594 540,594 540,550" style="fill:#FCFCFC"/>
+            <polygon
+                points="460,550 460,633 474,633 474,674 627,674 624,696
+                465,696 465,652 447,652 447,568" style="fill:#CFCFCF"/>
+            <polygon
+                points="550,550 550,594 540,594 540,570" style="fill:#CFCFCF"/>
+            <text x="463" y="620" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">满庭芳园B座(2号楼)</text>
+        </g>
+        <g id="满庭芳园C座3号楼">
+            <polygon
+                points="734,232 733,344 750,344 750,425 930,425 930,230 
+                840,230 840,294 828,294 828,232" style="fill:#FCFCFC"/>
+            <polygon
+                points="734,232 733,344 750,344 750,425 930,425 926,462 
+                741,462 741,377 720,377 720,250" style="fill:#CFCFCF"/>
+            <polygon
+                points="840,230 840,294 828,294 828,254" style="fill:#CFCFCF"/>
+            <text x="752" y="330" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">满庭芳园C座(3号楼)</text>
+        </g>
+        <g id="满庭芳园D座4号楼">
+            <polygon
+                points="1020,232 1020,344 1037,344 1037,425 1218,425 1218,230 
+                1126,230 1126,294 1115,294 1115,232" style="fill:#FCFCFC"/>
+            <polygon
+                points="1020,232 1020,344 1037,344 1037,425 1218,425 1212,462 
+                1028,462 1028,377 1006,377 1006,250" style="fill:#CFCFCF"/>
+            <polygon
+                points="1126,230 1126,294 1115,294 1115,256" style="fill:#CFCFCF"/>
+            <text x="1040" y="330" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">满庭芳园D座(4号楼)</text>
+        </g>
+        <g id="满庭芳园E座5号楼">
+            <polygon
+                points="1286,232 1286,344 1302,344 1302,425 1481,425 1481,230 
+                1392,230 1392,294 1380,294 1380,232" style="fill:#FCFCFC"/>
+            <polygon
+                points="1286,232 1286,344 1302,344 1302,425 1481,425 1478,462
+                1294,462 1294,377 1272,377 1272,250" style="fill:#CFCFCF"/>
+            <polygon
+                points="1392,230 1392,294 1380,294 1380,254" style="fill:#CFCFCF"/>
+            <text x="1305" y="330" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">满庭芳园E座(5号楼)</text>
+        </g>
+        <g id="满庭芳园F座6号楼">
+            <polygon
+                points="1573,232 1573,344 1590,344 1590,425 1768,425 1768,230 
+                1680,230 1680,294 1667,294 1667,232" style="fill:#FCFCFC"/>
+            <polygon
+                points="1573,232 1573,344 1590,344 1590,425 1768,425 1764,462
+                1581,462 1581,377 1560,377 1560,250" style="fill:#CFCFCF"/>
+            <polygon
+                points="1680,230 1680,294 1667,294 1667,254" style="fill:#CFCFCF"/>
+            <text x="1593" y="330" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">满庭芳园F座(6号楼)</text>
+        </g>
+        <g id="小区绿化林">
+            <rect x="803" y="543" width="165" height="108" style="fill:#76EE00"/> 
+            <rect x="1058" y="543" width="184" height="108" style="fill:#76EE00"/>
+            <polygon 
+                points="1334,547 1336,652 1520,645 1518,547" style="fill:#76EE00"/>
+            <polygon 
+                points="1640,547 1640,640 1825,632 1825,547" style="fill:#76EE00"/>
+            
+            <rect x="1845" y="355.5" width="10" height="121" style="fill:#76EE00"/>
+        </g>
+        <g id="立体车库">
+            <rect x="1825" y="150" width="135" height="73" style="fill:#5CACEE"/> 
+            <text x="1857" y="192" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">立体车库</text>
+            <rect x="1825" y="250" width="135" height="73" style="fill:#5CACEE"/>
+            <text x="1857" y="290" font-family="微软雅黑" font-size="18" fill="#424242" style="position: aboslute;">立体车库</text>
+        </g>
+        <g id="小区围墙">
+            <line x1="108" y1="515" x2="108" y2="702" stroke="#CD4F39" stroke-width="7"></line>
+            <polyline points="113,480 113,146 1970,144 1970,630 1335,658 1336,1013" style="fill:rgba(0,0,0,0)" stroke="#CD4F39" stroke-width="7"/>
+            <polyline points="107,730 107,764 680,763 680,716 737,716 737,656 1243,657 1242,1012" style="fill:rgba(0,0,0,0)" stroke="#CD4F39" stroke-width="7"/>
+            
+        </g>
+        <!-- 将所有的车位全部放在一个<g>组 -->
+        <g id="Parking_lot">
+            <!-- 倾斜的车位函数绘制一时没有突破 -->
+            <rect id="P_316" x="848" y="226" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-70,848,226)"></rect>
+            <rect id="P_317" x="864" y="226" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-70,864,226)"></rect>
+            <rect id="P_318" x="880" y="226" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-70,880,226)"></rect>
+            <rect id="P_319" x="896" y="226" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-70,896,226)"></rect>
+            <rect id="P_320" x="912" y="226" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-70,912,226)"></rect>
+
+            <rect id="P_334" x="1027" y="228" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-70,1027,228)"></rect>
+            <rect id="P_335" x="1043" y="228" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-70,1043,228)"></rect>
+            <rect id="P_336" x="1059" y="228" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-70,1059,228)"></rect>
+
+            <rect id="P_337" x="1079" y="215" width="24" height="13" style="fill:#FAFAD2" stroke="#1C86EE" stroke-width="1"></rect>
+            <rect id="P_338" x="1125" y="215" width="24" height="13" style="fill:#FAFAD2" stroke="#1C86EE" stroke-width="1"></rect>
+            
+            <rect id="P_339" x="1153" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1153,224)"></rect>
+            <rect id="P_340" x="1168" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1168,224)"></rect>
+            <rect id="P_341" x="1183" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1183,224)"></rect>
+            <rect id="P_342" x="1198" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1198,224)"></rect>
+            <rect id="P_343" x="1213" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1213,224)"></rect>
+            <rect id="P_344" x="1228" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1228,224)"></rect>
+            <rect id="P_345" x="1243" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1243,224)"></rect>
+            <rect id="P_346" x="1258" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1258,224)"></rect>
+            <rect id="P_347" x="1273" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1273,224)"></rect>
+            <rect id="P_348" x="1288" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1288,224)"></rect>
+            <rect id="P_349" x="1303" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1303,224)"></rect>
+            <rect id="P_350" x="1318" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1318,224)"></rect>
+            <rect id="P_351" x="1333" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1333,224)"></rect>
+            <rect id="P_352" x="1348" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1348,224)"></rect>
+
+            <rect id="P_353" x="1403" y="215" width="24" height="13" style="fill:#FAFAD2" stroke="#1C86EE" stroke-width="1"></rect>
+            <rect id="P_354" x="1432" y="215" width="24" height="13" style="fill:#FAFAD2" stroke="#1C86EE" stroke-width="1"></rect>
+
+            <rect id="P_355" x="1459" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1459,224)"></rect>
+            <rect id="P_356" x="1471" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1471,224)"></rect>
+            <rect id="P_357" x="1483" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1483,224)"></rect>
+            <rect id="P_358" x="1495" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1495,224)"></rect>
+            <rect id="P_359" x="1507" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1507,224)"></rect>
+            <rect id="P_360" x="1519" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1519,224)"></rect>
+            <rect id="P_361" x="1531" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1531,224)"></rect>
+            <rect id="P_362" x="1543" y="224" width="20" height="10" style="fill:#FAFAD2" stroke="#1C86EE"
+            stroke-width="1" transform="rotate(-60,1543,224)"></rect>
+        </g>
+    </svg>
+    <script>
+        for(var i=1; i<316; i++){
+            if(i<4){
+                drawParkingLot("P_"+i,193,660+(i-1)*14,24,12,"#1C86EE",1);
+            }else if(i<43){
+                drawParkingLot("P_"+i,114+(i-4)*14,733,12,24,"#1C86EE",1);
+            }else if(i<50){
+                drawParkingLot("P_"+i,603-(i-43)*22,697,20,12,"#1C86EE",1);
+            }else if(i<52){
+                drawParkingLot("P_"+i,434,606-(i-50)*26,12,24,"#1C86EE",1);
+            }else if(i<54){
+                drawParkingLot("P_"+i,422,563-(i-52)*14,24,12,"#1C86EE",1);
+            }else if(i<56){
+                drawParkingLot("P_"+i,393,549+(i-54)*14,24,12,"#1C86EE",1);
+            }else if(i<58){
+                drawParkingLot("P_"+i,393,580+(i-56)*26,12,24,"#1C86EE",1);
+            }else if(i<66){
+                drawParkingLot("P_"+i,375-(i-58)*22,697,20,12,"#1C86EE",1);
+            }else if(i<74){
+                drawParkingLot("P_"+i,118,639-(i-66)*14,22,12,"#1C86EE",1);
+            }else if(i<102){
+                drawParkingLot("P_"+i,218+(i-74)*12,523,12,24,"#1C86EE",1);
+            }else if(i<107){
+                drawParkingLot("P_"+i,404+(i-102)*24,443,12,24,"#1C86EE",1);
+            }else if(i<111){
+                drawParkingLot("P_"+i,568+(i-107)*14,523,12,24,"#1C86EE",1);
+            }else if(i<117){
+                drawParkingLot("P_"+i,633,545+(i-111)*26,12,24,"#1C86EE",1);
+            }else if(i<122){
+                drawParkingLot("P_"+i,680,696-(i-117)*12,24,12,"#1C86EE",1);
+            }else if(i<123){
+                drawParkingLot("P_"+i,680,617,12,24,"#1C86EE",1);
+            }else if(i<125){
+                drawParkingLot("P_"+i,680,544-(i-123)*26,12,24,"#1C86EE",1);
+            }else if(i<134){
+                drawParkingLot("P_"+i,696,532+(i-125)*12,24,12,"#1C86EE",1);
+            }else if(i<141){
+                drawParkingLot("P_",762,600-(i-134)*12,24,12,"#1C86EE",1);
+            }else if(i<175){
+                drawParkingLot("P_",805+(i-141)*13,517,13,24,"#1C86EE",1);
+            }else if(i<179){
+                drawParkingLot("P"+i,1244,556+(i-175)*12,24,12,"#1C86EE",1);
+            }else if(i<183){
+                drawParkingLot("P_"+i,1308,593-(i-179)*12,24,12,"#1C86EE",1);
+            }else if(i<220){
+                drawParkingLot("P_"+i,1317+(i-183)*13,517,13,24,"#1C86EE",1);
+            }else if(i<230){
+                drawParkingLot("P_"+i,1821,464-(i-220)*12,24,12,"#1C86EE",1);
+            }else if(i<232){
+                drawParkingLot("P_"+i,1790-(i-230)*18,152,12,24,"#1C86EE",1);
+            }else if(i<273){
+                drawParkingLot("P_"+i,1742-(i-232)*28,153,24,12,"#1C86EE",1);
+            }else if(i<292){
+                drawParkingLot("P_"+i,578,152+(i-273)*15,24,12,"#1C86EE",1);
+            }else if(i<312){
+                drawParkingLot("P_"+i,691,464-(i-292)*13.5,24,13.5,"#1C86EE",1);
+            }else {
+                drawParkingLot("P_"+i,734+(i-312)*24,216,22,12,"#1C86EE",1);
+            }
+        };
+        for(var j=321; j<334; j++){
+            if(j<327){
+                drawParkingLot("P_"+j,932,252+(j-321)*15,24,12,"#1C86EE",1);
+            }else{
+                drawParkingLot("P_"+j,980,251+(j-327)*13,24,11,"#1C86EE",1);
+            }
+        }
+        
+        for(var m=363; m<381; m++){
+            if(m<365){
+                drawParkingLot("P_"+m,1575+(m-363)*27,215,24,12,"#1C86EE",1)
+            }else if(m<368){
+                drawParkingLot("P_"+m,1630+(m-365)*12,207,12,24,"#1C86EE",1);
+            }else if(m<371){
+                drawParkingLot("P_"+m,1690+(m-368)*27,215,24,12,"#1C86EE",1);
+            }else{
+                drawParkingLot("P_"+m,1855,356+(m-371)*12,24,12,"#1C86EE",1);
+            }
+        }
+
+        // 满庭芳园不存在381 382号停车位 重启循环
+        for(var n=383; n<392; n++){
+            drawParkingLot("P_"+n,1938,467-(n-383)*12,24,12,"#1C86EE",1);
+        }
+        // 绘制几个没有号码标识的车位
+        drawParkingLot("noName1",736,627,12,24,"#1C86EE",1);
+        drawParkingLot("noName2",748,627,12,24,"#1C86EE",1);
+
+        drawParkingLot("noName3",762,612,24,12,"#1C86EE",1);
+
+        drawParkingLot("noName4",1244,544,24,12,"#1C86EE",1);
+
+        drawParkingLot("noName5",1308,545,24,12,"#1C86EE",1);
+
+        drawParkingLot("noName6",578,437,24,12,"#1C86EE",1);
+
+        drawParkingLot("noName7",1938,359,24,12,"#1C86EE",1);
+
+
+        function drawParkingLot(id,x,y,w,h,stroke,stroke_width){
+            var mysvg = document.getElementById("Parking_lot");
+            var myRect = document.createElementNS('http://www.w3.org/2000/svg',"rect");
+            myRect.setAttributeNS(null,"id",id);
+            myRect.setAttributeNS(null,"x",x);
+            myRect.setAttributeNS(null,"y",y);
+            myRect.setAttributeNS(null,"width",w);
+            myRect.setAttributeNS(null,"height",h);
+            myRect.setAttributeNS(null,"style",'fill:'+ "#FAFAD2");
+            myRect.setAttributeNS(null,"stroke",stroke);
+            myRect.setAttributeNS(null,"stroke-width",stroke_width);
+            // myRect.setAttributeNS(null,"transform","rotate(-70,852,226)");
+            mysvg.appendChild(myRect);
+        };
+
+        window.onload = function(){
+        svgPanZoom('#map',{
+            zoomEnabled:true,
+            controlIconsEnabled:true,
+            fit:true,
+            center:true,
+            minZoom:0.2,
+            maxZoom:3,
+        });
+    };
+    </script>
+</body>
+</html>

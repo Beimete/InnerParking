@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Svg Map</title>
+    <script type="text/javascript" src="lib/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="svg-pan-zoom.js"></script>
+    <!-- <script src="data/ajax.js"></script> -->
+    <style>
+    .events{
+        /* position:fixed; */
+        background-color:rgba(13, 13, 13, 0.5);
+        padding:10px 10px 10px 10px;
+        font:13px bold sans-serif;
+        color:#fff;
+        left:0px;
+        top:0px;
+        width:100%;
+        height:140px;
+        overflow:hidden
+    }
+    .events div{
+        overflow:hidden;
+        height:130px;
+        font-family: Verdana;
+        font-size:18px;
+        color:brown;
+
+    }
+    </style>
+</head>
+<body>
+    <svg width=1200 height="700" id="basemap"  onclick="handleMapClick(event)"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="小区围合_Floor">
+            <polygon 
+            points="30,38 30,550 190,550 190,592 875,592 875,550 1042,550 1042,38 875,38
+             875,20 190,20 190,38"
+            style="fill:#e6e6e6; stroke:black; stroke-width:2"/>
+        </g>
+
+        <g id="隆宝宸商务大厦"> 
+            <polygon
+            points="190,20 875,20 875,80 190,80"
+            style="fill:mediumpurple; stroke:black; stroke-width:2"/>
+            <text  x="450" y="55" font-family="微软雅黑" font-size="20" fill="#e6e6e6" style="position: absolute;">隆宝宸商务大厦</text>
+        </g>
+
+        <g id="加利大厦5号楼"> 
+            <polygon
+            points="190,512 190,592 875,592 875,512"
+            style="fill:slateblue; stroke:black; stroke-width:2"/>
+            <text x="450" y="555" font-family="微软雅黑" font-size="20" fill="#e6e6e6" style="position: aboslute;">加利大厦5号楼</text>
+        </g>
+
+        <g id="地下停车场出口">
+            <polygon
+            points="52,38 146,38 146,95 52,95"
+            style="fill:aquamarine; stroke:black; stroke-width:2"/>
+            <!-- <polygon
+            points="85,95 85,120 68,120 98,148 128,120 111,120 111,95"
+            style="fill:palegreen; stroke:black; stroke-width: 2"/> -->
+        </g>
+
+        <g id="地下停车场入口">
+            <polygon
+            points="930,38 1024,38 1024,95 930,95"
+            style="fill:aquamarine; stroke:black; stroke-width:2"/>
+            <!-- <polygon
+            points="964,148 964,123 947,123 977,95 1007,123 990,123 990,148"
+            style="fill:palegreen; stroke:black; stroke-width: 2"/> -->
+        </g>
+
+        <g id="小区出口">
+            <line x1="152" y1="550" x2="152" y2="320" stroke="black" stroke-width="5"></line>
+            <line x1="152" y1="38" x2="152" y2="136" stroke="black" stroke-width="5"></line>
+        </g>
+        
+        <g id="小区入口">
+            <line x1="1030" y1="550" x2="1030" y2="364" stroke="black" stroke-width="5"></line>
+            <line x1="1030" y1="38" x2="1030" y2="290" stroke="black" stroke-width="5"></line>
+        </g>
+        
+        <g id="绿化带">
+            <rect id="g_rect1" x="168" y="456" width="143" height="15" 
+            style="fill:yellowgreen;stroke-width:1.5;stroke:rgb(0,0,0)"/>
+            <!-- <text x="235" y="468" font-family="Verdana" font-size="15" fill="#e6e6e6" style="position: absolute;">1</text> -->
+            <rect id="g_rtct2" x="337" y="456" width="143" height="15" 
+            style="fill:yellowgreen;stroke-width:1.5;stroke:rgb(0,0,0)"/>
+            <rect id="g_rtct3" x="503" y="456" width="143" height="15" 
+            style="fill:yellowgreen;stroke-width:1.5;stroke:rgb(0,0,0)"/>
+            <rect id="g_rtct4" x="667" y="456" width="143" height="15" 
+            style="fill:yellowgreen;stroke-width:1.5;stroke:rgb(0,0,0)"/>
+        </g>
+        <g id="Parking_lot">
+        </g>
+
+    </svg>
+    <div class="events"><div id="events"></div></div>
+<script>
+    // 批量生成parking_lot图形
+    for(var i=1; i<50; i++){
+        if(i<27){
+            drawParkingLot("P_"+i,170+i*27,85,25,50,"gold","rgb(0,0,0)",1);
+            addText(182+i*27,112,"P_"+i); 
+        }else{
+            drawParkingLot("P_"+i,255+(i-27)*27,390,25,50,"gold","rgb(0,0,0)",1);
+            addText(268+(i-27)*27,420,"P_"+i);
+        } 
+    };
+
+    // 给停车位添加标识号码
+    function addText(x,y,val){
+        var newText = document.createElementNS("http://www.w3.org/2000/svg","text");
+        newText.setAttributeNS(null,"x",x);     
+        newText.setAttributeNS(null,"y",y); 
+        newText.setAttributeNS(null,"font-size","9");
+        newText.setAttributeNS(null,"font-family","Verdana");
+        newText.setAttributeNS(null,"fill","#050505");
+        newText.setAttributeNS(null,"text-anchor","middle");
+        newText.setAttribute(null,"dominant-baseline","middle");
+        var textNode = document.createTextNode(val);
+        newText.appendChild(textNode);
+        document.getElementById("basemap").appendChild(newText);
+    };
+       
+    // 批量化绘制车位图
+    function drawParkingLot(id,x,y,w,h,fill,stroke,stroke_width){
+        var mysvg = document.getElementById("Parking_lot");
+        var myRect = document.createElementNS('http://www.w3.org/2000/svg',"rect");
+        myRect.setAttributeNS(null,"id",id);
+        myRect.setAttributeNS(null,"x",x);
+        myRect.setAttributeNS(null,"y",y);
+        myRect.setAttributeNS(null,"width",w);
+        myRect.setAttributeNS(null,"height",h);
+        myRect.setAttributeNS(null,"style",'fill:'+ fill);
+        myRect.setAttributeNS(null,"stroke",stroke);
+        myRect.setAttributeNS(null,"stroke-width",stroke_width);
+        mysvg.appendChild(myRect);
+    };
+        
+    // 停车位定位地图的全局click事件
+    function handleMapClick(event) {
+        console.log(event);
+        if(event.srcElement.parentElement.id!=="Parking_lot"&&event.srcElement.parentElement.id!==""){
+            if(event.srcElement.localName=="text"){
+                content = event.srcElement.innerHTML;
+                document.getElementById('events').innerHTML = '<div>' + "You Clicked on the Text!" + '<br>' + 
+                    "the text means:" + content +  '</div>';
+            }else{
+                console.log("event.srcElement:",event.srcElement.parentElement.id);
+                content = "offsetX:" + event.offsetX + '<br>' + "offsetY:" + event.offsetY + '<br>' + 
+                "event_screenX:" + event.screenX + '<br>' + 
+                "event_screenY:" + event.screenY + '<br>'+
+                "This is:" + event.srcElement.parentElement.id ;
+                document.getElementById('events').innerHTML = '<div>' + content + '</div>';
+            }
+        }else{
+                content = "offsetX:" + event.offsetX + '<br>' + "offsetY:" + event.offsetY + '<br>' + 
+                "event_screenX:" + event.screenX + '<br>' + 
+                "event_screenY:" + event.screenY + '<br>'+
+                "This is:" + event.srcElement.id ;
+                document.getElementById('events').innerHTML = '<div>' + content + '</div>';
+        }
+        
+    };
+
+    function hoverChange(event){
+        
+    }
+    // SVG滚轮 鼠标双击放大和左键平移
+    window.onload = function(){
+        svgPanZoom('#basemap',{
+            zoomEnabled:true,
+            controlIconsEnabled:true,
+            fit:true,
+            center:true,
+            minZoom:0.6,
+            maxZoom:3,
+        });
+    };
+
+</script>
+</body>
+</html>
