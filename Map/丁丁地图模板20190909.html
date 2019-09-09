@@ -1,0 +1,508 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>丁丁地图模板</title>
+    <script type="text/javascript" src="./svg-pan-zoom.js"></script>
+</head>
+<body>
+
+    <svg width="960" height="480" id="map"
+         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+         onclick="handleMapClick(event)"
+    >
+        <g id="Background"></g>
+        <g id="Building"></g>
+        <g id="Arrow"></g>
+        <g id="Fence"></g>
+        <g id="Others"></g>
+        <g id="Parking_lot"></g>
+    </svg>
+	
+    <script>
+
+var mapElement = [
+	//背景 Background
+	{"SerialNo":"1","Color":"#F0F8FF","AreaId":"6","StartCode":"背景","Type":"Background","Points":"21,127 21,338 539,338 539,127","Height":""},
+	
+	//车位 ParkingLot
+	{"SerialNo":"99","AreaId":"6","EndCode":"03","Direction":"S","space":"14","StartCode":"01","Type":"ParkingLot","Angle":"0","X":"113","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"06","Direction":"S","space":"14","StartCode":"04","Type":"ParkingLot","Angle":"0","X":"161","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"09","Direction":"S","space":"14","StartCode":"07","Type":"ParkingLot","Angle":"0","X":"209","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"12","Direction":"S","space":"14","StartCode":"10","Type":"ParkingLot","Angle":"0","X":"257","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"15","Direction":"S","space":"14","StartCode":"13","Type":"ParkingLot","Angle":"0","X":"307","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"17","Direction":"S","space":"14","StartCode":"16","Type":"ParkingLot","Angle":"0","X":"357","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"18A","Direction":"S","space":"14","StartCode":"18A","Type":"ParkingLot","Angle":"0","X":"385","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"20A","Direction":"S","space":"14","StartCode":"19A","Type":"ParkingLot","Angle":"0","X":"406","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"18B","Direction":"S","space":"14","StartCode":"18B","Type":"ParkingLot","Angle":"0","X":"434","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"20B","Direction":"S","space":"14","StartCode":"19B","Type":"ParkingLot","Angle":"0","X":"456","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"21","Direction":"S","space":"14","StartCode":"21","Type":"ParkingLot","Angle":"0","X":"484","Y":"187","nextDirection":"E"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"24","Direction":"N","space":"14","StartCode":"22","Type":"ParkingLot","Angle":"0","X":"485","Y":"260","nextDirection":"W"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"27","Direction":"N","space":"14","StartCode":"25","Type":"ParkingLot","Angle":"0","X":"435","Y":"260","nextDirection":"W"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"30","Direction":"N","space":"14","StartCode":"28","Type":"ParkingLot","Angle":"0","X":"385","Y":"260","nextDirection":"W"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"36","Direction":"N","space":"14","StartCode":"31","Type":"ParkingLot","Angle":"0","X":"335","Y":"260","nextDirection":"W"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"39","Direction":"N","space":"14","StartCode":"37","Type":"ParkingLot","Angle":"0","X":"242","Y":"260","nextDirection":"W"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"42","Direction":"N","space":"14","StartCode":"40","Type":"ParkingLot","Angle":"0","X":"192","Y":"260","nextDirection":"W"},
+	{"SerialNo":"99","AreaId":"6","EndCode":"44","Direction":"N","space":"14","StartCode":"43","Type":"ParkingLot","Angle":"0","X":"142","Y":"260","nextDirection":"W"},
+	
+	//建筑物 Building
+	{"SerialNo":"99","AreaId":"6","StartCode":"隆宝宸商务大厦","Type":"Building","Points":"478,113 478,157 86,157 86,113","X":"280","Y":"142","shadowPoints":"478,113 478,157 86,157 86,113 80,116 80,162 470,162 478,157"},
+	{"SerialNo":"99","AreaId":"6","StartCode":"加利大厦5号楼","Type":"Building","Points":"478,308 478,352 86,352 86,308","X":"280","Y":"337","shadowPoints":"478,308 478,352 86,352 86,308 80,311 80,357 470,357 478,352"},
+	
+	//箭头 Arrow
+	{"SerialNo":"99","AreaId":"6","Direction":"N","StartCode":"In","Type":"Arrow","X":"498","Y":"157"},
+	{"SerialNo":"99","AreaId":"6","Direction":"S","StartCode":"Out","Type":"Arrow","X":"38","Y":"157"},
+	
+	//围栏 Fence
+	{"SerialNo":"99","Color":"#FFEFD5","AreaId":"6","StartCode":"栅栏_西北1","Type":"Fence","Angle":"0","X":"64","Y":"128","Height":"60","Width":"3"},
+	{"SerialNo":"99","Color":"#FFEFD5","AreaId":"6","StartCode":"栅栏_东北1","Type":"Fence","Angle":"0","X":"526","Y":"128","Height":"60","Width":"3"},
+	{"SerialNo":"99","Color":"#FFEFD5","AreaId":"6","StartCode":"栅栏_西南1","Type":"Fence","Angle":"0","X":"64","Y":"260","Height":"35","Width":"3"},
+	{"SerialNo":"99","Color":"#FFEFD5","AreaId":"6","StartCode":"栅栏_西南2","Type":"Fence","Angle":"0","X":"64","Y":"303","Height":"35","Width":"3"},
+	{"SerialNo":"99","Color":"#FFEFD5","AreaId":"6","StartCode":"栅栏_东南1","Type":"Fence","Angle":"0","X":"526","Y":"260","Height":"35","Width":"3"},
+	{"SerialNo":"99","Color":"#FFEFD5","AreaId":"6","StartCode":"栅栏_东南2","Type":"Fence","Angle":"0","X":"526","Y":"303","Height":"35","Width":"3"},
+	{"SerialNo":"99","Color":"#90EE90","AreaId":"6","StartCode":"花坛_南1","Type":"Fence","Angle":"0","X":"69","Y":"292","Height":"4","Width":"85"},
+	{"SerialNo":"99","Color":"#90EE90","AreaId":"6","StartCode":"花坛_南2","Type":"Fence","Angle":"0","X":"167","Y":"292","Height":"4","Width":"85"},
+	{"SerialNo":"99","Color":"#90EE90","AreaId":"6","StartCode":"花坛_南3","Type":"Fence","Angle":"0","X":"265","Y":"292","Height":"4","Width":"85"},
+	{"SerialNo":"99","Color":"#90EE90","AreaId":"6","StartCode":"花坛_南4","Type":"Fence","Angle":"0","X":"363","Y":"292","Height":"4","Width":"85"},
+	{"SerialNo":"99","Color":"#90EE90","AreaId":"6","StartCode":"花坛_南5","Type":"Fence","Angle":"0","X":"462","Y":"292","Height":"4","Width":"32"},
+	
+	//其他元素 Others
+	{"SerialNo":"99","Color":"#1E90FF","AreaId":"6","EndCode":"地下停车场入口","StartCode":"地下停车场入口","Type":"Others","Points":"417,130 490,130 490,144 499,154 477,144 417,144","X":"454","Y":"141","Height":"","TextColor":"white","Width":"10"},
+	{"SerialNo":"99","Color":"#1E90FF","AreaId":"6","EndCode":"地下停车场出口","StartCode":"地下停车场出口","Type":"Others","Points":"140,130 67,130 67,144 58,154 78,144 140,144","X":"104","Y":"141","Height":"","TextColor":"white","Width":"10"},
+	{"SerialNo":"99","Color":"#00FF00","AreaId":"6","EndCode":"小区入口","StartCode":"小区入口","Type":"Others","Points":"471,233 528,233 528,248 513,255 519,248 471,248","X":"500","Y":"245","Height":"","TextColor":"white","Width":"12"},
+	{"SerialNo":"99","Color":"#D2691E","AreaId":"6","EndCode":"北","StartCode":"指北针","Type":"Others","Points":"78,45 72,60 78,75 82,60","X":"77","Y":"42","Height":"","TextColor":"#778899","Width":"12"},
+	{"SerialNo":"99","Color":"#00FF00","AreaId":"6","EndCode":"小区出口","StartCode":"小区出口","Type":"Others","Points":"26,192 82,192 82,208 68,216 73,208 26,208","X":"54","Y":"205","Height":"","TextColor":"white","Width":"12"},
+	{"SerialNo":"99","Color":"#FCFCFC","AreaId":"6","EndCode":"地铁5号线","Direction":"tb","StartCode":"地铁5号线","Type":"Others","Points":"543,119 543,205 557,205 557,119","X":"550","Y":"165","Height":"","TextColor":"#1E90FF","Width":"12"},
+	{"SerialNo":"99","Color":"#FCFCFC","AreaId":"6","EndCode":"北苑路","Direction":"tb","StartCode":"北苑路","Type":"Others","Points":"6,119 6,205 20,205 20,119","X":"10","Y":"155","Height":"","TextColor":"#1E90FF","Width":"12"},
+	{"SerialNo":"50","Color":"#778899","AreaId":"6","StartCode":"地库_东门_Bottom","Type":"Others","Points":"490,123 526,123 526,146 490,146","Height":""},
+	{"SerialNo":"60","Color":"#B0C4DE","AreaId":"6","EndCode":"P","StartCode":"地库_东门_Top","Type":"Others","Points":"494,123 522,123 522,146 494,146","X":"508","Y":"136","Height":"","Width":"12"},
+	{"SerialNo":"51","Color":"#778899","AreaId":"6","StartCode":"地库_西门_Bottom","Type":"Others","Points":"30,123 64,123 64,146 30,146","Height":""},
+	{"SerialNo":"61","Color":"#B0C4DE","AreaId":"6","EndCode":"P","StartCode":"地库_西门_Top","Type":"Others","Points":"34,123 60,123 60,146 34,146","X":"48","Y":"136","Height":"","Width":"12"},
+	{"SerialNo":"99","Color":"#1E90FF","AreaId":"6","StartCode":"道闸_东门_岗亭","Type":"Others","Points":"511,189 511,203 529,203 529,189","Height":""},
+	{"SerialNo":"99","Color":"#1E90FF","AreaId":"6","StartCode":"道闸_东门_杆","Type":"Others","Points":"527,204 527,227 529,227 529,204","Height":""},
+	{"SerialNo":"99","Color":"#1E90FF","AreaId":"6","StartCode":"道闸_西门_岗亭","Type":"Others","Points":"49,246 49,260 68,260 68,246","Height":""},
+	{"SerialNo":"99","Color":"#1E90FF","AreaId":"6","StartCode":"道闸_西门_杆","Type":"Others","Points":"66,222 66,245 68,245 68,222","Height":""},
+]
+
+pad =function (tbl) {
+    return function (num, n) {
+        return (0 >= (n = n - num.toString().length)) ? num : (tbl[n] || (tbl[n] = Array(n + 1).join(0))) + num;
+    }
+}([]);
+
+
+
+//停车场地图
+drawMapElements(mapElement)
+svgPanZoom('#map',{
+    zoomEnabled:true,
+    controlIconsEnabled:true,
+    fit:true,
+    center:true,
+    minZoom:0.2,
+    maxZoom:3,
+});
+
+
+                    
+
+function drawMapElements(mapElement) {
+    for(var i=0;i<mapElement.length;i++){
+        if(mapElement[i].Type == "ParkingLot"){
+            var j = 0;
+            drawParkingLot(mapElement[i].StartCode             //先画第一个车位
+                ,parseInt(mapElement[i].X)
+                ,parseInt(mapElement[i].Y)
+                ,mapElement[i].Direction
+                ,parseInt(mapElement[i].Angle)
+                ,j
+                ,mapElement[i].nextDirection
+                ,parseInt(mapElement[i].space)
+            );
+            j++;
+
+            var code = mapElement[i].StartCode
+            while(code != mapElement[i].EndCode && j<100) {    //判断是否要画一串车位，而且最多连续画不超过100个，以防死循环
+                code = addstrnums(code)
+                drawParkingLot(code
+                    ,parseInt(mapElement[i].X)
+                    ,parseInt(mapElement[i].Y)
+                    ,mapElement[i].Direction
+                    ,parseInt(mapElement[i].Angle)
+                    ,j
+                    ,mapElement[i].nextDirection
+                    ,parseInt(mapElement[i].space)
+                );
+                j++;
+            }
+        }
+        else if(mapElement[i].Type == "Building"){
+            drawBuilding(mapElement[i].StartCode
+                ,parseInt(mapElement[i].X)
+                ,parseInt(mapElement[i].Y)
+                ,mapElement[i].Points
+                ,mapElement[i].shadowPoints)
+        }
+        else if(mapElement[i].Type == "Arrow"){
+            drawArrow(mapElement[i].StartCode
+                ,parseInt(mapElement[i].X)
+                ,parseInt(mapElement[i].Y)
+                ,mapElement[i].Direction)
+        }
+        else if(mapElement[i].Type == "Fence"){
+            drawFence(mapElement[i].StartCode
+                ,parseInt(mapElement[i].X)
+                ,parseInt(mapElement[i].Y)
+                ,parseInt(mapElement[i].Width)
+                ,parseInt(mapElement[i].Height)
+                ,mapElement[i].Color
+                ,parseInt(mapElement[i].Angle))
+        }
+        else if(mapElement[i].Type == "Others"){    //(id,x,y,points,fill_color,text,text_size,text_color,writeMode)
+            drawOthers(mapElement[i].StartCode
+                ,parseInt(mapElement[i].X)
+                ,parseInt(mapElement[i].Y)
+                ,mapElement[i].Points
+                ,mapElement[i].Color
+                ,mapElement[i].EndCode
+                ,mapElement[i].Width
+                ,mapElement[i].TextColor
+                ,mapElement[i].Direction)
+        }
+        else if(mapElement[i].Type == "Background"){
+            drawBackground(mapElement[i].StartCode
+                ,parseInt(mapElement[i].X)
+                ,parseInt(mapElement[i].Y)
+                ,mapElement[i].Points
+                ,mapElement[i].Color)
+        }
+    }
+}
+
+function addstrnums(str) {                  //字符串中数字自增
+    var tmp = str.replace(/[^0-9]/ig, "");
+    var pos = str.indexOf(tmp);
+
+    if (tmp != "") {
+        var nn = parseInt(tmp) + 1;
+        nn = pad(nn, tmp.length);
+        var left = str.substring(0, pos);
+        var right = str.substring(pos + tmp.length);
+        return left + nn + right;
+    }
+    else {
+        return str;
+    }
+}
+
+
+function drawParkingLot(id,x,y,direction,angle,index,nextDirection,space){
+    var mysvg = document.getElementById("Parking_lot");
+    var x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,textX,textY,writeMode;
+
+    //自动生成车位的方向
+    if(nextDirection == "E"){				//朝右
+        x = x + index * space
+    }
+    else if (nextDirection == "S"){				//朝下
+        y = y + index * space
+    }
+    else if (nextDirection == "W"){				//朝左
+        x = x - index * space
+    }
+    else if (nextDirection == "N"){				//朝上
+        y = y - index * space
+    }
+
+    //各方向参数设置
+    if(direction == "E"){				//开口朝右
+        x1=x;
+        y1=y-4;
+        x2=x-24;
+        y2=y-4;
+        x3=x-24;
+        y3=y+8;
+        x4=x;
+        y4=y+8;
+        x5=x;
+        y5=y+4;
+        textX = x-13;
+        textY = y+4;
+    }
+    else if (direction == "S"){				//开口朝下
+        x1=x-4;
+        y1=y;
+        x2=x-4;
+        y2=y-24;
+        x3=x+8;
+        y3=y-24;
+        x4=x+8;
+        y4=y;
+        x5=x+4;
+        y5=y;
+        textX = x+3;
+        textY = y-10;
+        writeMode ="tb";
+    }
+    else if (direction == "W"){				//开口朝左
+        x1=x;
+        y1=y-4;
+        x2=x+24;
+        y2=y-4;
+        x3=x+24;
+        y3=y+8;
+        x4=x;
+        y4=y+8;
+        x5=x;
+        y5=y+4;
+        textX = x+13;
+        textY = y+4;
+    }
+    else if (direction == "N"){				//开口朝上
+        x1=x-4;
+        y1=y;
+        x2=x-4;
+        y2=y+24;
+        x3=x+8;
+        y3=y+24;
+        x4=x+8;
+        y4=y;
+        x5=x+4;
+        y5=y;
+        textX = x+3;
+        textY = y+12;
+        writeMode = "tb";
+    }
+
+    //画开口车位
+    var mypolyline = document.createElementNS('http://www.w3.org/2000/svg',"polyline");
+    mypolyline.setAttributeNS(null,"id",id);
+    mypolyline.setAttributeNS(null,"points",x+","+y+","+x1+","+y1+","+x2+","+y2+","+x3+","+y3+","+x4+","+y4+","+x5+","+y5);
+    mypolyline.setAttributeNS(null,"style",'fill:'+ "white");
+    mypolyline.setAttributeNS(null,"stroke","blue");
+    mypolyline.setAttributeNS(null,"stroke-width",1);
+    mypolyline.setAttributeNS(null,"transform","skewX("+angle+") skewY(0)");
+    mysvg.appendChild(mypolyline);
+
+    //画车位编号
+    var newText = document.createElementNS('http://www.w3.org/2000/svg',"text");
+    var textNode = document.createTextNode(id);
+    newText.appendChild(textNode);
+    newText.setAttributeNS(null,"id",id);
+    newText.setAttributeNS(null,"x",textX);
+    newText.setAttributeNS(null,"y",textY);
+    newText.setAttributeNS(null,"font-size","6");
+    newText.setAttributeNS(null,"font-family","Verdana");
+    newText.setAttributeNS(null,"fill","#DD7907");
+    newText.setAttributeNS(null,"text-anchor","middle");
+    newText.setAttributeNS(null,"writing-mode",writeMode);
+    newText.setAttributeNS(null,"transform","skewX("+angle+") skewY(0)");
+    mysvg.appendChild(newText);
+}
+
+function drawBuilding(id,x,y,points,shadowPoints){
+    var mysvg = document.getElementById("Building");
+    var mypolyline = document.createElementNS('http://www.w3.org/2000/svg',"polyline");
+    mypolyline.setAttributeNS(null,"id",id);
+    mypolyline.setAttributeNS(null,"points",points);
+    mypolyline.setAttributeNS(null,"style",'fill:'+ "#F4F8F4");
+    mypolyline.setAttributeNS(null,"stroke","#F4F8F4");
+    mypolyline.setAttributeNS(null,"stroke-width",1);
+    mysvg.appendChild(mypolyline);
+    //
+    var newText = document.createElementNS('http://www.w3.org/2000/svg',"text");
+    var textNode = document.createTextNode(id);
+    newText.appendChild(textNode);
+    newText.setAttributeNS(null,"x",x);
+    newText.setAttributeNS(null,"y",y);
+    newText.setAttributeNS(null,"font-size","20");
+    newText.setAttributeNS(null,"font-family","微软雅黑");
+    newText.setAttributeNS(null,"fill","#424242");
+    newText.setAttributeNS(null,"text-anchor","middle");
+    mysvg.appendChild(newText);
+
+
+    var mysvg = document.getElementById("Building");
+    var mypolyline2 = document.createElementNS('http://www.w3.org/2000/svg',"polyline");
+    mypolyline2.setAttributeNS(null,"id",id);
+    var points2 = shadowPoints
+    mypolyline2.setAttributeNS(null,"points",points2);
+    mypolyline2.setAttributeNS(null,"style",'fill:'+ "#CFCFCF");
+    mypolyline2.setAttributeNS(null,"stroke","#F4F8F4");
+    mypolyline2.setAttributeNS(null,"stroke-width",1);
+    mysvg.appendChild(mypolyline2);
+
+}
+
+function drawArrow(id,x,y,direction){
+    var mysvg = document.getElementById("Arrow");
+    var x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7;
+
+    //各方向参数设置
+    if(direction == "E"){				//开口朝右
+        x1=x;
+        y1=y+10;
+        x2=x+25;
+        y2=y+10;
+        x3=x+25;
+        y3=y+15;
+        x4=x+40;
+        y4=y+5;
+        x5=x+25;
+        y5=y-5;
+        x6=x+25;
+        y6=y;
+        x7=x;
+        y7=y;
+
+    }
+    else if (direction == "S"){				//开口朝下
+        x1=x+10;
+        y1=y+15;
+        x2=x+20;
+        y2=y;
+        x3=x+15;
+        y3=y;
+        x4=x+15;
+        y4=y-15;
+        x5=x+5;
+        y5=y-15;
+        x6=x+5;
+        y6=y;
+        x7=x;
+        y7=y;
+
+    }
+    else if (direction == "W"){				//开口朝左
+        x1=x+15;
+        y1=y+10;
+        x2=x+15;
+        y2=y+5;
+        x3=x+40;
+        y3=y+5;
+        x4=x+40;
+        y4=y-5;
+        x5=x+15;
+        y5=y-5;
+        x6=x+15;
+        y6=y-10;
+        x7=x;
+        y7=y;
+
+    }
+    else if (direction == "N"){				//开口朝上
+        x1=x+5;
+        y1=y;
+        x2=x+5;
+        y2=y+15;
+        x3=x+15;
+        y3=y+15;
+        x4=x+15;
+        y4=y;
+        x5=x+20;
+        y5=y;
+        x6=x+10;
+        y6=y-15;
+        x7=x;
+        y7=y;
+
+    }
+
+    //箭头
+    var mypolyline = document.createElementNS('http://www.w3.org/2000/svg',"polyline");
+    mypolyline.setAttributeNS(null,"id",id);
+    mypolyline.setAttributeNS(null,"points",x+","+y+","+x1+","+y1+","+x2+","+y2+","+x3+","+y3+","+x4+","+y4+","+x5+","+y5+","+x6+","+y6+","+x7+","+y7);
+    mypolyline.setAttributeNS(null,"style",'fill:'+ "#1E90FF");
+    mypolyline.setAttributeNS(null,"stroke","blue");
+    mypolyline.setAttributeNS(null,"stroke-width",1);
+    mysvg.appendChild(mypolyline);
+}
+
+
+function drawFence(id,x,y,w,h,stroke,angle) {
+    var mysvg = document.getElementById("Fence");
+    var myRect = document.createElementNS('http://www.w3.org/2000/svg', "rect");
+    myRect.setAttributeNS(null, "id", id);
+    myRect.setAttributeNS(null, "x", x);
+    myRect.setAttributeNS(null, "y", y);
+    myRect.setAttributeNS(null, "width", w);
+    myRect.setAttributeNS(null, "height", h);
+    myRect.setAttributeNS(null, "style", 'fill:' + stroke);
+    myRect.setAttributeNS(null, "stroke-width", '1');
+    myRect.setAttributeNS(null, "transform", "skewX(" + angle + ") skewY(0)");
+    mysvg.appendChild(myRect);
+}
+
+function drawOthers(id,x,y,points,fill_color,text,text_size,text_color,writeMode) {
+    var mysvg = document.getElementById("Others");
+    var mypolyline = document.createElementNS('http://www.w3.org/2000/svg',"polyline");
+    mypolyline.setAttributeNS(null,"id",id);
+    mypolyline.setAttributeNS(null,"points",points);
+    mypolyline.setAttributeNS(null,"style",'fill:'+ fill_color);
+    mypolyline.setAttributeNS(null,"stroke-width",'1');
+    mysvg.appendChild(mypolyline);
+    //
+    if(text){
+        var newText = document.createElementNS('http://www.w3.org/2000/svg',"text");
+        var textNode = document.createTextNode(text);
+        newText.appendChild(textNode);
+        newText.setAttributeNS(null,"x",x);
+        newText.setAttributeNS(null,"y",y);
+        newText.setAttributeNS(null,"font-size",text_size);
+        newText.setAttributeNS(null,"font-family","微软雅黑");
+        newText.setAttributeNS(null,"fill",text_color);
+        newText.setAttributeNS(null,"text-anchor","middle");
+        newText.setAttributeNS(null,"writing-mode",writeMode);
+        mysvg.appendChild(newText);
+    }
+}
+
+function drawBackground(id,x,y,points,fill_color) {
+    var mysvg = document.getElementById("Background");
+    var mypolyline = document.createElementNS('http://www.w3.org/2000/svg',"polyline");
+    mypolyline.setAttributeNS(null,"id",id);
+    mypolyline.setAttributeNS(null,"points",points);
+    mypolyline.setAttributeNS(null,"style",'fill:'+ fill_color);
+    mypolyline.setAttributeNS(null,"stroke-width",'1');
+    mysvg.appendChild(mypolyline);
+}
+
+//---------------------------------------------------------------------------
+function handleMapClick(event) {
+    // var width = document.getElementById('map').scrollWidth;
+    // var height = document.getElementById('map').scrollHeight;
+    var content =   "offsetX:" + event.offsetX + '\n' +
+                    "offsetY:" + event.offsetY + '\n' +
+                    "event_screenX:" + event.screenX + '\n' +
+                    "event_screenY:" + event.screenY + '\n'
+    // console.log("scrollWidth:",width,"scrollHeight:",height,event);
+    console.log(content)
+    if(event.srcElement.parentElement.id!=="Parking_lot"){
+        console.log("This is:" + event.srcElement.parentElement.id)
+    }else{
+        var currentId = event.srcElement.id
+        console.log("Parking_lot:" + currentId)
+
+        //点击切换车位白色/浅灰色
+        if(getParkingLotColor(currentId) == 'white'){
+            setParkingLotColor(currentId,'lightgrey');
+        }
+        else if(getParkingLotColor(currentId) == 'lightgrey'){
+            setParkingLotColor(currentId,'white');
+        }
+    }
+
+}
+
+function getParkingLotColor(id){
+    return document.getElementById(id).style.fill
+}
+
+function setParkingLotColor(id,color){
+    document.getElementById(id).style.fill = color
+}
+    </script>
+</body>
+</html>
